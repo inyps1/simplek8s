@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+    type: NodePort
+    ports:
+        - port: 3030 #this is used to expose to others
+          targetPort: 4200
+          nodePort: 31515
+            # nodePort is 30000 - 32767
+    selector:
+        # you can also name as per your convenience liek mycomponent: web
+        # but the client-pd-yaml file also should have matching lable
+
+        component: web
